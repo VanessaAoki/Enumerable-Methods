@@ -22,7 +22,8 @@ module Enumerable
   end
 
   def my_select
-    # code here
+    return to_enum(:my_select) unless block_given?
+
   end
 
   def my_all?
