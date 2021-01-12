@@ -23,7 +23,13 @@ module Enumerable
 
   def my_select
     return to_enum(:my_select) unless block_given?
-
+      i = []
+      my_each do |x|
+        if yield(x)
+          i.push(x)
+        end
+      end
+      i
   end
 
   def my_all?
