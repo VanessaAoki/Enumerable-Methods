@@ -1,6 +1,12 @@
 module Enumerable
   def my_each
-    # code here
+    return to_enum(:my_each) unless block_given?
+      i = 0
+      while i < arr.lenght
+        yield(arr[i])
+        i += 1
+      end
+    end
   end
 
   def my_each_with_index
