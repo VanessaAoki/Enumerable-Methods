@@ -1,2 +1,63 @@
-# Enumerable-Methods
-This is the project #2 of the Ruby module in Microverse
+![](https://img.shields.io/badge/Microverse-blueviolet)
+
+
+## Basic Enumerable Methods
+
+### About the Project
+
+This project consists of an implementation of my own version of following Ruby’s enumerable methods:
+
+- Each;
+- Each with index;
+- Select;
+- All;
+- Any;
+- None;
+- Count;
+- Map;
+- Inject.
+
+
+## Built With
+
+- Ruby
+- Visual Studio, Git & GitHub
+
+
+## Getting Started
+
+### Prerequisites
+To run this project, you need a computer with Ruby installed.
+
+### Setup
+1- Clone the repository:
+```
+https://github.com/VanessaAoki/Enumerable-Methods.git
+```
+2 - Execute the file using ruby enumerables.rb on the terminal.
+
+
+## Author
+
+👩🏼‍💻 **Vanessa Aoki**
+
+- GitHub: [@VanessaAoki](https://github.com/VanessaAoki)
+- Twitter: [@VanessaSAoki](https://twitter.com/VanessaSAoki)
+- Linkedin: [Vanessa Aoki](https://www.linkedin.com/in/vanessasaoki/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/VanessaAoki/Enumerable-Methods/issues).
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
