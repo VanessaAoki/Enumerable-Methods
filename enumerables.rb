@@ -33,15 +33,30 @@ module Enumerable
   end
 
   def my_all?
-    # code here
+    my_each do |x|
+      if yield(x) !true
+        return false
+      end
+    end
+    return true
   end
   
   def my_any?
-    # code here
+    my_each do |x|
+      if yield(x) !false
+        return true
+      end
+    end
+    return false
   end
 
   def my_none?
-    # code here
+    my_each do |x|
+      if yield(x) !false
+        return true
+      end
+    end
+    return false
   end
 
   def my_count
