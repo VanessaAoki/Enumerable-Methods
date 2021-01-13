@@ -52,7 +52,7 @@ module Enumerable
 
   def my_none?
     my_each do |x|
-      if yield(x) !false
+      if yield(x) !true
         return true
       end
     end
