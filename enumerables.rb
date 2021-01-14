@@ -64,7 +64,12 @@ module Enumerable
   end
 
   def my_map
-    # code here
+    return to_enum(:my_map) unless block_given?
+      i = []
+      my_each do |x|
+          i.push(x)
+      end
+      i
   end
 
   def my_inject
