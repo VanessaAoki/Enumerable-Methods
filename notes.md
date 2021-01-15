@@ -1,5 +1,5 @@
 ## Enumerable Methods
-### This is a document that contains an explanation to all the methods presented in this project.
+### This notes contains an explanation to all the methods presented in this project, for quick references.
 Credits for [ruby-doc](https://ruby-doc.org/core-2.6.5/Enumerable.html#method-i-each_cons), all descriptions were extracted from there.
 
 #### my_each
