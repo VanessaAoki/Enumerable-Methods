@@ -10,9 +10,9 @@ This project consists of an implementation of my own version of following Rubyâ€
 - Each;
 - Each with index;
 - Select;
-- All;
-- Any;
-- None;
+- All?;
+- Any?;
+- None?;
 - Count;
 - Map;
 - Inject.
