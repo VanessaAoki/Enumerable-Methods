@@ -56,4 +56,12 @@ module Enumerable
     return false
   end
 
+  def my_count
+    counter = 0
+    self.my_each { |x| 
+      counter += 1 
+      if yield(x)}
+    counter
+  end
+
 end
