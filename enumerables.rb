@@ -58,10 +58,34 @@ module Enumerable
 
   def my_count
     counter = 0
-    self.my_each { |x| 
-      counter += 1 
-      if yield(x)}
-    counter
+    if block given?
+      self.my_each { |value| counter =+ 1 if yield(value)}
+    else
+      counter = self.count
+    end
+    return counter
   end
 
+  def my_map(&my_proc)
+    arr = []
+    self.my_each do |value|
+      if my_proc.nil?
+        arr.push(my_proc.call(value))        
+      else
+        arr.push(yield(value))
+      end
+    end
+    return arr
+  end
+
+  def my_inject(inject=self(0))
+    self.my_each_with_index do |value, index|
+      inject = yield(inject, value) if index > 0
+    end
+    return inject
+  end
+end
+
+def multiply_els
+  
 end
