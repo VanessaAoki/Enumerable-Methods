@@ -24,33 +24,33 @@ module Enumerable
   def my_select
     return to_enum(:my_select) unless block_given?
       i = []
-      my_each do |x|
-        if yield(x)
-          i.push(x)
+      my_each do |value|
+        if yield(value)
+          i.push(value)
         end
       end
     i
   end
 
   def my_all?
-    my_each do |x|
-      if yield(x) != true
+    my_each do |value|
+      if yield(value) != true
         return false
       end
     return true
   end
   
   def my_any?
-    my_each do |x|
-      if yield(x) != false
+    my_each do |value|
+      if yield(value) != false
         return true
       end
     return false
   end
 
   def my_none?
-    my_each do |x|
-      if yield(x) != true
+    my_each do |value|
+      if yield(value) != true
         return true
       end
     return false
