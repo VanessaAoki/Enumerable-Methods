@@ -17,6 +17,8 @@ This project consists of an implementation of my own version of following Rubyâ€
 - Map;
 - Inject.
 
+> If you have any questions about the methods above, consider checking the [notes](./Notes.md).
+
 
 ## Built With
 
@@ -28,13 +30,14 @@ This project consists of an implementation of my own version of following Rubyâ€
 
 ### Prerequisites
 To run this project, you need a computer with Ruby installed.
+> If you are uncertain on how to install Ruby, check out this [tutorial](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming) made by The Odin Project.
 
 ### Setup
 1- Clone the repository:
 ```
 https://github.com/VanessaAoki/Enumerable-Methods.git
 ```
-2 - Execute the file using ruby enumerables.rb on the terminal.
+2 - Execute the file by using '$ ruby enumerables.rb' on the terminal.
 
 
 ## Author
