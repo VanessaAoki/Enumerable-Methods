@@ -30,7 +30,7 @@ This project consists of an implementation of my own version of following Rubyâ€
 
 ### Prerequisites
 To run this project, you need a computer with Ruby installed.
-> If you are uncertain on how to install Ruby, check out this [tutorial](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming) made by The Odin Project.
+> If you are uncertain on how to install Ruby, check out this [tutorial](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming) made by [The Odin Project](https://www.theodinproject.com/about).
 
 ### Setup
 1- Clone the repository:
