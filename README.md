@@ -37,7 +37,7 @@ To run this project, you need a computer with Ruby installed.
 ```
 https://github.com/VanessaAoki/Enumerable-Methods.git
 ```
-2 - Execute the file by using '$ ruby enumerables.rb' on the terminal.
+2 - Execute the file by using `$ ruby enumerables.rb` on the terminal.
 
 
 ## Author
