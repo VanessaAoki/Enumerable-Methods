@@ -38,6 +38,7 @@ module Enumerable
         return false
       end
     return true
+    end
   end
   
   def my_any?
@@ -46,6 +47,7 @@ module Enumerable
         return true
       end
     return false
+    end
   end
 
   def my_none?
@@ -54,6 +56,7 @@ module Enumerable
         return true
       end
     return false
+    end
   end
 
   def my_count
@@ -78,7 +81,7 @@ module Enumerable
     return arr
   end
 
-  def my_inject(inject=self(0))
+  def my_inject(inject=self[0])
     self.my_each_with_index do |value, index|
       inject = yield(inject, value) if index > 0
     end
