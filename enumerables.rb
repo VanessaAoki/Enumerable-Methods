@@ -8,7 +8,7 @@ module Enumerable
         i += 1
       end
     self
-  end 
+  end
 
   def my_each_with_index
     return to_enum(:my_each_with_index) unless block_given?
@@ -40,7 +40,7 @@ module Enumerable
     return true
     end
   end
-  
+
   def my_any?
     my_each do |value|
       if yield(value) != false
@@ -59,12 +59,14 @@ module Enumerable
     end
   end
 
-  def my_count
+  def my_count(arg = nil)
     counter = 0
-    if block given?
-      self.my_each { |value| counter =+ 1 if yield(value)}
+    if block_given?
+      self.my_each {|x| counter += 1 if yield(x)}
+    elsif !block_given? && arg.nil?
+      counter = self.length
     else
-      counter = self.count
+      counter = self.my_select {|x| x == arg}.length
     end
     return counter
   end
@@ -89,7 +91,11 @@ module Enumerable
   end
 end
 
-
 def multiply_els(arr)
   arr.my_inject{|total, n| total*n}
 end
+
+arr = [1, 6, 2, 4, 3, 2]
+puts arr.my_count
+puts arr.my_count(2)
+puts (arr.my_count{|x| x%2==0})
