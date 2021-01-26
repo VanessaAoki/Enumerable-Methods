@@ -32,13 +32,19 @@ module Enumerable
     i
   end
 
-  def my_all?
-    my_each do |value|
-      if yield(value) != true
-        return false
-      end
-    return true
+  def my_all?(arg = nil)
+    if block_given?
+      self.my_each {|value| return false if yield(value) != true}
+    elsif arg.nil?
+      self.my_each {|value| return false if value.nil? || value == false}
+    elsif !arg.nil? && (arg.is_a? Class)
+      self.my_each {|value| return false unless [value.class.superclass].include?(arg)}
+    elsif !arg.nil? && arg.class == Regexp
+      self.my_each {|value| return false unless arg.match(value)}
+    else
+      self.my_each {|value| return false if value != arg}
     end
+    return true
   end
 
   def my_any?
@@ -50,7 +56,7 @@ module Enumerable
     end
   end
 
-  def my_none?
+  def my_none?(arg = nil)
     my_each do |value|
       if yield(value) != true
         return true
@@ -95,7 +101,11 @@ def multiply_els(arr)
   arr.my_inject{|total, n| total*n}
 end
 
-arr = [1, 6, 2, 4, 3, 2]
-puts arr.my_count
-puts arr.my_count(2)
-puts (arr.my_count{|x| x%2==0})
+puts (%w[ant bear cat].my_none? { |word| word.length == 5 }) #=> true
+puts (%w[ant bear cat].my_none? { |word| word.length >= 4 }) #=> false
+puts %w[ant bear cat].my_none?(/d/) #=> true
+puts [1, 3.14, 42].my_none?(Float) #=> false
+puts [].my_none? #=> true
+puts [nil].my_none? #=> true
+puts [nil, false].my_none? #=> true
+puts [nil, false, true].my_none? #=> false
