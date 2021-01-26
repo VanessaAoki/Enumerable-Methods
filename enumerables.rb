@@ -63,11 +63,10 @@ module Enumerable
   end
 
   def my_none?(arg = nil)
-    my_each do |value|
-      if yield(value) != true
-        return true
-      end
-    return false
+    if block_given?
+      !my_any?(&Proc.new)
+    else
+      !my_any?(arg)
     end
   end
 
@@ -107,9 +106,11 @@ def multiply_els(arr)
   arr.my_inject{|total, n| total*n}
 end
 
-puts (%w[ant bear cat].my_any? { |word| word.length >= 3 }) #=> true
-puts (%w[ant bear cat].my_any? { |word| word.length >= 4 }) #=> true
-puts %w[ant bear cat].my_any?(/d/) #=> false
-puts [nil, true, 99].my_any?(Integer) #=> true
-puts [nil, true, 99].my_any? #=> true
-puts [].my_any? #=> false
+puts (%w[ant bear cat].my_none? { |word| word.length == 5 }) #=> true
+puts (%w[ant bear cat].my_none? { |word| word.length >= 4 }) #=> false
+puts %w[ant bear cat].my_none?(/d/) #=> true
+puts [1, 3.14, 42].my_none?(Float) #=> false
+puts [].my_none? #=> true
+puts [nil].my_none? #=> true
+puts [nil, false].my_none? #=> true
+puts [nil, false, true].my_none? #=> false
