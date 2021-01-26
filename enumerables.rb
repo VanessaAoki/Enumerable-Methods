@@ -38,7 +38,7 @@ module Enumerable
     elsif arg.nil?
       self.my_each {|value| return false if value.nil? || value == false}
     elsif !arg.nil? && (arg.is_a? Class)
-      self.my_each {|value| return false unless [value.class.superclass].include?(arg)}
+      self.my_each {|value| return false unless [value.class, value.class.superclass].include?(arg)}
     elsif !arg.nil? && arg.class == Regexp
       self.my_each {|value| return false unless arg.match(value)}
     else
@@ -47,13 +47,19 @@ module Enumerable
     return true
   end
 
-  def my_any?
-    my_each do |value|
-      if yield(value) != false
-        return true
-      end
-    return false
+  def my_any?(arg = nil)
+    if block_given?
+      self.my_each {|value| return true if yield(value)}
+    elsif arg.nil?
+      self.my_each {|value| return true if value}
+    elsif !arg.nil? && (arg.is_a? Class)
+      self.my_each {|value| return true if [value.class, value.class.superclass].include?(arg)}
+    elsif !arg.nil? && arg.class == Regexp
+      self.my_each {|value| return true if arg.match(value)}
+    else
+      self.my_each {|value| return true if value == arg}
     end
+    return false
   end
 
   def my_none?(arg = nil)
@@ -101,11 +107,9 @@ def multiply_els(arr)
   arr.my_inject{|total, n| total*n}
 end
 
-puts (%w[ant bear cat].my_none? { |word| word.length == 5 }) #=> true
-puts (%w[ant bear cat].my_none? { |word| word.length >= 4 }) #=> false
-puts %w[ant bear cat].my_none?(/d/) #=> true
-puts [1, 3.14, 42].my_none?(Float) #=> false
-puts [].my_none? #=> true
-puts [nil].my_none? #=> true
-puts [nil, false].my_none? #=> true
-puts [nil, false, true].my_none? #=> false
+puts (%w[ant bear cat].my_any? { |word| word.length >= 3 }) #=> true
+puts (%w[ant bear cat].my_any? { |word| word.length >= 4 }) #=> true
+puts %w[ant bear cat].my_any?(/d/) #=> false
+puts [nil, true, 99].my_any?(Integer) #=> true
+puts [nil, true, 99].my_any? #=> true
+puts [].my_any? #=> false
