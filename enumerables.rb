@@ -2,9 +2,10 @@ module Enumerable
 
   def my_each
     return to_enum(:my_each) unless block_given?
+
       i = 0
-      while i < self.length
-        yield(self[i])
+      while i < to_a.length
+        yield(to_a[i])
         i += 1
       end
     self
@@ -82,35 +83,33 @@ module Enumerable
     return counter
   end
 
-  def my_map(&my_proc)
+  def my_map(proc = nil)
+    return to_enum(:my_map) unless block_given? || proc != nil
+
     arr = []
-    self.my_each do |value|
-      if my_proc.nil?
-        arr.push(my_proc.call(value))        
-      else
-        arr.push(yield(value))
-      end
+    if proc != nil
+      self.my_each {|value| arr << proc.call(value)}
+    else
+      self.my_each {|value| arr << yield(value)}
     end
     return arr
   end
 
-  def my_inject(inject=self[0])
-    self.my_each_with_index do |value, index|
-      inject = yield(inject, value) if index > 0
+  def my_inject(total = nil, n = nil)
+    if total.is_a?(Symbol)
+      n = total
+      total = nil
     end
-    return inject
+
+    if !block_given? && !n.nil?
+      self.my_each{|value| total = total.nil? ? value : total.send(n, value)}
+    else
+      self.my_each{|value| total = total.nil? ? value : yield(total, value)}
+    end
+    return total
   end
 end
 
 def multiply_els(arr)
-  arr.my_inject{|total, n| total*n}
+  arr.my_inject{|total, n| total * n}
 end
-
-puts (%w[ant bear cat].my_none? { |word| word.length == 5 }) #=> true
-puts (%w[ant bear cat].my_none? { |word| word.length >= 4 }) #=> false
-puts %w[ant bear cat].my_none?(/d/) #=> true
-puts [1, 3.14, 42].my_none?(Float) #=> false
-puts [].my_none? #=> true
-puts [nil].my_none? #=> true
-puts [nil, false].my_none? #=> true
-puts [nil, false, true].my_none? #=> false
