@@ -20,6 +20,11 @@ This project consists of an implementation of my own version of following Rubyâ€
 > If you have any questions about the methods above, consider checking the [notes](./Notes.md).
 
 
+## Live Demo
+
+This is a [live demo](https://repl.it/@VanessaAoki/Enumerables#main.rb) with all methods in this project.
+
+
 ## Built With
 
 - Ruby
