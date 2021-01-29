@@ -17,7 +17,7 @@ This project consists of an implementation of my own version of following Rubyâ€
 - Map;
 - Inject.
 
-> If you have any questions about the methods above, consider checking the [notes](./Notes.md).
+> If you have any questions about one of the methods above, consider checking the [notes](./Notes.md) file.
 
 
 ## Live Demo
