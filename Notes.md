@@ -9,6 +9,7 @@ Credits for [ruby-doc](https://ruby-doc.org/core-2.6.5/Enumerable.html#method-i-
 Iterates the given block for each element with an arbitrary object given, and returns the initially given object.
 
 If no block is given, returns an enumerator.
+
 <br>
 
 #### #my_each_with_index
@@ -16,40 +17,47 @@ Calls block with two arguments, the item and its index, for each item in enum. G
 
 If no block is given, an enumerator is returned instead.
 
+<br>
 
 #### #my_select
 Returns an array containing all elements of enum for which the given block returns a true value.
 
 If no block is given, an Enumerator is returned instead.
 
+<br>
 
 #### #my_all?
 Passes each element of the collection to the given block. The method returns true if the block never returns false or nil. If the block is not given, Ruby adds an implicit block of { |obj| obj } which will cause all? to return true when none of the collection members are false or nil.
 
 If instead a pattern is supplied, the method returns whether pattern === element for every collection member.
 
+<br>
 
 #### #my_any?
 Passes each element of the collection to the given block. The method returns true if the block ever returns a value other than false or nil. If the block is not given, Ruby adds an implicit block of { |obj| obj } that will cause any? to return true if at least one of the collection members is not false or nil.
 
 If instead a pattern is supplied, the method returns whether pattern === element for any collection member.
 
+<br>
 
 #### #my_none?
 Passes each element of the collection to the given block. The method returns true if the block never returns true for all elements. If the block is not given, none? will return true only if none of the collection members is true.
 
 If instead a pattern is supplied, the method returns whether pattern === element for none of the collection members.
 
+<br>
 
 #### #my_count
 Returns the number of items in enum through enumeration. If an argument is given, the number of items in enum that are equal to item are counted. If a block is given, it counts the number of elements yielding a true value.
 
+<br>
 
 #### #my_map
 Returns a new array with the results of running block once for every element in enum.
 
 If no block is given, an enumerator is returned instead.
 
+<br>
 
 #### #my_inject
 Combines all elements of enum by applying a binary operation, specified by a block or a symbol that names a method or operator.
