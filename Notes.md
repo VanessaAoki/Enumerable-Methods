@@ -4,6 +4,7 @@
 Credits for [ruby-doc](https://ruby-doc.org/core-2.6.5/Enumerable.html#method-i-each_cons), all descriptions were extracted from there.
 
 <br>
+
 #### #my_each
 Iterates the given block for each element with an arbitrary object given, and returns the initially given object.
 
