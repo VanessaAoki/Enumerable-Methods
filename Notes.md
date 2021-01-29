@@ -3,12 +3,12 @@
 ### This notes contains an explanation to all the methods presented in this project, for quick references.
 Credits for [ruby-doc](https://ruby-doc.org/core-2.6.5/Enumerable.html#method-i-each_cons), all descriptions were extracted from there.
 
-
+<br>
 #### #my_each
 Iterates the given block for each element with an arbitrary object given, and returns the initially given object.
 
 If no block is given, returns an enumerator.
-
+<br>
 
 #### #my_each_with_index
 Calls block with two arguments, the item and its index, for each item in enum. Given arguments are passed through to each().
