@@ -99,4 +99,18 @@ describe Enumerable do
       expect([].my_none?).to eql(true)
     end
   end
+
+  describe "#my_count" do
+    it "returns the number of elements" do
+      expect(numbers.my_count).to eql(8)
+    end
+
+    it "returns the number of elements that are equal to the given argument" do
+      expect(numbers.my_count(2)).to eql(1)
+    end
+
+    it "returns the number of elements that matches the block" do
+      expect(numbers.my_count{|x| x % 2 == 0}).to eql(4)
+    end  
+  end
 end

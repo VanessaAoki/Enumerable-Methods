@@ -63,11 +63,15 @@ module Enumerable
   end
 
   def my_none?(arg = nil)
+    arr = to_a
     if block_given?
-      !my_any?(&Proc.new)
+      arr.length.times { |i| return false if yield(arr[i]) }
+    elsif !arg.nil?
+      return false unless arr.grep(arg).empty?
     else
-      !my_any?(arg)
+      arr.length.times { |i| return false unless arr[i].nil? || arr[i] == false }
     end
+    true
   end
 
   def my_count(arg = nil)
