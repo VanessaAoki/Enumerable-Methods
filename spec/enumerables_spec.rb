@@ -3,7 +3,7 @@ require_relative '../enumerables.rb'
 describe Enumerable do
   let(:array) {["ruby", "test", "rspec"]}
   let(:numbers) {[1, 2, 3, 4, 5, 6, 7, 8]}
-
+  let(:falsearray) {[false, false, false]}
   describe "#my_each" do
     it "return all the elements in the array" do
       expect(array.my_each).to include "ruby"
@@ -53,6 +53,50 @@ describe Enumerable do
 
     it "returns true if the array is empty" do
       expect([].my_all?).to eql(true)
+    end
+  end
+
+  describe "#my_any?" do
+    it "returns true if no block is given and if 1 of the elements is nil or false from the list" do
+      expect(array.my_any?).to eql(true)
+    end
+
+    it "returns true if at least one of the elements returns true" do
+      expect(array.my_any? { |word| word.length >= 4 }).to eql(true)
+    end
+
+    it "returns false if all elements return false" do
+      expect(array.my_any? { |word| word.length >= 6 }).to eql(false)
+    end
+
+    it "returns true if at least one element is the same data type" do      
+      expect(array.my_any?(String)).to eql(true)
+    end
+
+    it "returns false if the array is empty" do
+      expect([].my_any?).to eql(false)
+    end
+  end
+
+  describe "#my_none?" do
+    it "returns true if no block is given and if all of the elements are nil or false from the list" do
+      expect(falsearray.my_none?).to eql(true)
+    end
+
+    it "returns true if it's never true" do
+      expect(array.my_none? { |word| word.length >= 6 }).to eql(true)
+    end
+
+    it "returns false if at least one return true" do
+      expect(array.my_none? { |word| word.length >= 4 }).to eql(false)
+    end
+
+    it "returns false if at least one element is the same data type" do      
+      expect(array.my_none?(String)).to eql(false)
+    end
+
+    it "returns true if the array is empty" do
+      expect([].my_none?).to eql(true)
     end
   end
 end
