@@ -113,4 +113,14 @@ describe Enumerable do
       expect(numbers.my_count{|x| x % 2 == 0}).to eql(4)
     end  
   end
+
+  describe "#my_map" do
+    it "returns a new array with the results of running block once for every element in enum" do
+      expect([1, 2, 3, 4].my_map {|i| i + i }).to eql([2, 4, 6, 8])
+    end
+
+    it "if no block is given, returns an enumerator" do
+      expect(array.my_map) == array.to_enum
+    end
+  end
 end
