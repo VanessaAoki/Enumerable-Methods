@@ -123,4 +123,19 @@ describe Enumerable do
       expect(array.my_map) == array.to_enum
     end
   end
+
+  describe "#my_inject" do
+    it "return the sum of all elements" do
+      expect((5..10).my_inject(:+)).to eql(45)
+    end
+
+    it "returns one value from the elements" do
+      expect((5..10).my_inject(1) { |product, n| product * n }).to eql(151200)
+    end
+
+    it "returns the longest word" do
+      expect(array.my_inject {|memo, word|
+        memo.length > word.length ? memo : word}).to eql("rspec")
+    end
+  end
 end
