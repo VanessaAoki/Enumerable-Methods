@@ -140,3 +140,11 @@ describe Enumerable do
     end
   end
 end
+
+describe "#multiply_els" do
+  let(:test_array) { [1, 2, 3, 4, 5, 6, 7, 8] }
+  it "returns the injected array" do
+    expect(multiply_els(test_array)).to eql(40320)
+  end
+end
+
