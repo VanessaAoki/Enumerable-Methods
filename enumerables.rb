@@ -39,7 +39,7 @@ module Enumerable
       my_each { |value| return false if value.nil? || value == false }
     elsif !arg.nil? && (arg.is_a? Class)
       my_each { |value| return false unless [value.class, value.class.superclass].include?(arg) }
-    elsif !arg.nil? && arg.class == Regexp
+    elsif !arg.nil? && arg.instance_of?(Regexp)
       my_each { |value| return false unless arg.match(value) }
     else
       my_each { |value| return false if value != arg }
@@ -54,7 +54,7 @@ module Enumerable
       my_each { |value| return true if value }
     elsif !arg.nil? && (arg.is_a? Class)
       my_each { |value| return true if [value.class, value.class.superclass].include?(arg) }
-    elsif !arg.nil? && arg.class == Regexp
+    elsif !arg.nil? && arg.instance_of?(Regexp)
       my_each { |value| return true if arg.match(value) }
     else
       my_each { |value| return true if value == arg }
