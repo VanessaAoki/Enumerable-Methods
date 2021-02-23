@@ -43,7 +43,7 @@ describe Enumerable do
       expect(array.my_all? { |word| word.length >= 4 }).to eql(true)
     end
 
-    it "returns false if the block one or more elements return false" do
+    it "returns false if one or more elements return false" do
       expect(array.my_all? { |word| word.length >= 5 }).to eql(false)
     end
 
